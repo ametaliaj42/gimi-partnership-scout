@@ -3,7 +3,7 @@ import EmptyState     from './EmptyState.jsx';
 import LoadingSkeleton from './LoadingSkeleton.jsx';
 import ResultCard      from './ResultCard.jsx';
 
-export default function ResultsPanel({ status, results, error, query }) {
+export default function ResultsPanel({ status, results, error, query, onStatusChange }) {
   if (status === 'idle')    return <EmptyState />;
   if (status === 'loading') return <LoadingSkeleton count={query?.numRecommendations ?? 3} />;
   if (status === 'error')   return <ErrorState message={error} />;
@@ -43,7 +43,7 @@ export default function ResultsPanel({ status, results, error, query }) {
 
       {/* Cards */}
       {results.map((rec, i) => (
-        <ResultCard key={rec.id ?? i} rec={rec} index={i} />
+        <ResultCard key={rec.id ?? i} rec={rec} index={i} onStatusChange={onStatusChange} />
       ))}
     </div>
   );

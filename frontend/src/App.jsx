@@ -14,6 +14,7 @@ export default function App() {
   const [results,   setResults]   = useState([]);
   const [error,     setError]     = useState(null);
   const [lastQuery, setLastQuery] = useState(null);
+  const [filterUncontacted, setFilterUncontacted] = useState(false);
 
   async function handleSubmit(formData) {
     setStatus('loading');
@@ -31,6 +32,17 @@ export default function App() {
     }
   }
 
+  // Filter results based on contact status
+  const filteredResults = filterUncontacted
+    ? results.filter(r => r.contactStatus === 'uncontacted' || r.contactStatus === 'dismissed')
+    : results;
+
+  function handleStatusChange(companyId, newStatus) {
+    setResults(results.map(r =>
+      r.id === companyId ? { ...r, contactStatus: newStatus } : r
+    ));
+  }
+
   return (
     <div className="app-shell">
       <Header />
@@ -39,14 +51,19 @@ export default function App() {
           <ScoutForm
             onSubmit={handleSubmit}
             isLoading={status === 'loading'}
+            filterUncontacted={filterUncontacted}
+            onFilterChange={setFilterUncontacted}
+            totalResults={results.length}
+            filteredCount={filteredResults.length}
           />
         </aside>
         <main className="main-panel">
           <ResultsPanel
             status={status}
-            results={results}
+            results={filteredResults}
             error={error}
             query={lastQuery}
+            onStatusChange={handleStatusChange}
           />
         </main>
       </div>

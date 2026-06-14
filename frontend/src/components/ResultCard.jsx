@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ScoreRing  from './ScoreRing.jsx';
 import EmailModal from './EmailModal.jsx';
 
-export default function ResultCard({ rec, index }) {
+export default function ResultCard({ rec, index, onStatusChange }) {
   const [profileExpanded, setProfileExpanded] = useState(false);
   const [showEmail,        setShowEmail]       = useState(false);
 
@@ -10,6 +10,9 @@ export default function ResultCard({ rec, index }) {
   const hasRedFlags  =
     rec.redFlags?.length > 0 &&
     !(rec.redFlags.length === 1 && rec.redFlags[0].toLowerCase().includes('no significant'));
+  
+  const isContacted = rec.contactStatus === 'contacted';
+  const isDismissed = rec.contactStatus === 'dismissed';
 
   return (
     <>
@@ -141,15 +144,67 @@ export default function ResultCard({ rec, index }) {
 
         {/* ── Footer ─────────────────────────────────────────────────────── */}
         <div className="card-footer">
-          <span className="t-xs c-muted">
-            {isResearched ? '✓ Based on public data' : '⚠ Illustrative profile'}
-          </span>
+          <div style={{ display: 'flex', flex: 1, alignItems: 'center', gap: 12 }}>
+            <span className="t-xs c-muted">
+              {isResearched ? '✓ Based on public data' : '⚠ Illustrative profile'}
+            </span>
+          </div>
+        </div>
+
+        {/* Contact channels */}
+        <div style={{ paddingBottom: 0 }}>
+          <div className="contact-channels">
+            {rec.contactEmail && (
+              <a
+                href={`mailto:${rec.contactEmail}`}
+                className="contact-link email-link"
+                title={`Email: ${rec.contactEmail}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <EmailContactIcon />
+                <span className="contact-label">{rec.contactEmail}</span>
+              </a>
+            )}
+            {rec.linkedinUrl && (
+              <a
+                href={rec.linkedinUrl}
+                className="contact-link linkedin-link"
+                title="Visit on LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon />
+                <span className="contact-label">View on LinkedIn</span>
+              </a>
+            )}
+          </div>
+        </div>
+
+        {/* Contact status buttons */}
+        <div className="contact-status-bar">
+          <button
+            className={`status-btn${isContacted ? ' status-active' : ''}`}
+            onClick={() => onStatusChange(rec.id, isContacted ? 'uncontacted' : 'contacted')}
+            title={isContacted ? 'Mark as uncontacted' : 'Mark as contacted'}
+          >
+            <CheckCircleIcon active={isContacted} />
+            <span>Contacted</span>
+          </button>
+          <button
+            className={`status-btn${isDismissed ? ' status-active' : ''}`}
+            onClick={() => onStatusChange(rec.id, isDismissed ? 'uncontacted' : 'dismissed')}
+            title={isDismissed ? 'Mark as uncontacted' : 'Mark as dismissed'}
+          >
+            <XCircleIcon active={isDismissed} />
+            <span>Dismissed</span>
+          </button>
           <button
             className="btn-primary"
-            style={{ width: 'auto', padding: '9px 20px', fontSize: '0.875rem' }}
+            style={{ flex: 1, padding: '9px 16px', fontSize: '0.875rem' }}
             onClick={() => setShowEmail(true)}
           >
-            <EmailIcon /> View Outreach Email
+            <EmailIcon /> View Email
           </button>
         </div>
       </article>
@@ -192,4 +247,20 @@ function FlagIcon() {
 }
 function EmailIcon() {
   return <svg {...iconProps}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>;
+}
+
+function EmailContactIcon() {
+  return <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>;
+}
+
+function LinkedInIcon() {
+  return <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>;
+}
+
+function CheckCircleIcon({ active }) {
+  return <svg width="14" height="14" viewBox="0 0 24 24" fill={active ? 'var(--green-500)' : 'none'} stroke={active ? 'var(--green-500)' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>;
+}
+
+function XCircleIcon({ active }) {
+  return <svg width="14" height="14" viewBox="0 0 24 24" fill={active ? 'var(--red-500)' : 'none'} stroke={active ? 'var(--red-500)' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>;
 }

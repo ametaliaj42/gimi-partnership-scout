@@ -10,6 +10,9 @@ export const MOCK_RECOMMENDATIONS = [
     category: "University",
     countryRegion: "Singapore",
     researchStatus: "RESEARCHED",
+    contactStatus: "uncontacted",
+    contactEmail: "partnerships@nus.edu.sg",
+    linkedinUrl: "https://linkedin.com/company/national-university-of-singapore",
     organizationProfile:
       "The National University of Singapore is a leading global research university consistently ranked in the world's top 15. NUS enrols over 40,000 students across 17 faculties and schools. Its Business School operates one of Asia's most respected MBA and Executive Education portfolios, with innovation and entrepreneurship embedded across the curriculum through NUS Enterprise. The university maintains extensive corporate and government partnerships, including deep ties with Singapore's Economic Development Board.",
     whyTheyFit: [
@@ -49,6 +52,9 @@ giminstitute.org`,
     category: "Government Association",
     countryRegion: "Japan (Pan-Asia mandate)",
     researchStatus: "RESEARCHED",
+    contactStatus: "uncontacted",
+    contactEmail: "partnerships@adbi.org",
+    linkedinUrl: "https://linkedin.com/company/asian-development-bank-institute",
     organizationProfile:
       "The Asian Development Bank Institute is the research and capacity-building arm of the Asian Development Bank, headquartered in Tokyo with a mandate spanning 49 member economies. ADBI designs and delivers executive training programs for government officials, policymakers, and public sector leaders across the Asia-Pacific region. Its programming increasingly focuses on digital transformation, sustainable innovation, and economic modernisation. ADBI publishes widely cited policy research and hosts regular high-level forums attended by ministerial-level delegations.",
     whyTheyFit: [
@@ -85,6 +91,9 @@ giminstitute.org`,
     category: "Corporate",
     countryRegion: "Germany (Global operations)",
     researchStatus: "RESEARCHED",
+    contactStatus: "uncontacted",
+    contactEmail: "innovation.partnerships@siemens.com",
+    linkedinUrl: "https://linkedin.com/company/siemens",
     organizationProfile:
       "Siemens AG is a global technology conglomerate operating in over 200 countries with approximately 320,000 employees and annual revenue exceeding €75 billion. The company operates a dedicated innovation management function through its Corporate Technology division and has publicly committed to structured innovation frameworks as part of its Vision 2030 strategy. Siemens runs internal innovation academies and regularly certifies employees in Lean, Six Sigma, and agile methodologies. The company has active innovation partnerships with universities and industry bodies across Europe, Asia, and the Americas.",
     whyTheyFit: [
@@ -122,6 +131,9 @@ giminstitute.org`,
     category: "Certified Training Partner",
     countryRegion: "Portugal (Global — 40+ countries)",
     researchStatus: "RESEARCHED",
+    contactStatus: "uncontacted",
+    contactEmail: "partnerships@kaizeninstitute.com",
+    linkedinUrl: "https://linkedin.com/company/kaizen-institute",
     organizationProfile:
       "Kaizen Institute is a global management consulting and training organisation founded in 1985 and operating in over 40 countries. The institute specialises in continuous improvement, operational excellence, and innovation management consulting, serving clients across manufacturing, healthcare, retail, and financial services. Kaizen Institute delivers structured training programs and professional certifications through its global network of consultants. Its innovation consulting practice has expanded significantly since 2018, with dedicated teams in Europe, Asia, and the Americas working on corporate innovation strategy.",
     whyTheyFit: [
@@ -158,6 +170,9 @@ giminstitute.org`,
     category: "Strategic Brand Partner",
     countryRegion: "United States (Global — 180+ countries)",
     researchStatus: "RESEARCHED",
+    contactStatus: "uncontacted",
+    contactEmail: "partnerships@pmi.org",
+    linkedinUrl: "https://linkedin.com/company/project-management-institute",
     organizationProfile:
       "The Project Management Institute is the world's leading professional association for project management, with over 700,000 members and credential holders across 180 countries. PMI offers globally recognised certifications including the PMP (Project Management Professional) and has expanded its portfolio into agile, strategy, and transformation domains. PMI operates a global network of chapters, publishes research through its PMI Pulse of the Profession report, and runs the PMI Global Summit attended by tens of thousands of practitioners annually. In recent years PMI has positioned itself as a partner for organisations navigating strategic change and innovation.",
     whyTheyFit: [

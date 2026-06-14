@@ -756,6 +756,139 @@ ul, ol   { list-style: none; }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
+   CONTACT CHANNELS & STATUS
+───────────────────────────────────────────────────────────────────────────── */
+.contact-channels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-4) 0;
+  border-top: 1px solid var(--surface-border);
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-md);
+  background: var(--surface-subtle);
+  border: 1px solid transparent;
+  transition: all var(--t-base) var(--ease-out);
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  background: var(--surface-border);
+  border-color: var(--teal-300);
+}
+
+.contact-link.email-link:hover {
+  color: var(--teal-600);
+}
+
+.contact-link.linkedin-link:hover {
+  color: #0A66C2;
+}
+
+.contact-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-status-bar {
+  display: flex;
+  gap: var(--sp-2);
+  padding: var(--sp-4) 0 0 0;
+}
+
+.status-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-2);
+  border-radius: var(--r-md);
+  background: var(--surface-subtle);
+  border: 2px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t-base) var(--ease-out);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-btn:hover {
+  background: var(--surface-border);
+  border-color: var(--teal-300);
+  color: var(--text-primary);
+}
+
+.status-btn.status-active {
+  border-color: var(--green-500);
+  background: var(--green-bg);
+  color: var(--green-500);
+}
+
+.status-btn.status-active:has(path[stroke*="red"]) {
+  border-color: var(--red-500);
+  background: var(--red-bg);
+  color: var(--red-500);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   CARD FOOTER ADJUSTMENT
+───────────────────────────────────────────────────────────────────────────── */
+.filter-toggle {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  background: var(--surface-subtle);
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--t-base) var(--ease-out);
+}
+
+.filter-toggle:hover {
+  background: var(--surface-border);
+}
+
+.filter-toggle.active {
+  background: var(--teal-50);
+  border-color: var(--teal-500);
+  color: var(--teal-700);
+  font-weight: 600;
+}
+
+.filter-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.filter-label {
+  flex: 1;
+  text-align: left;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
    RESPONSIVE
 ───────────────────────────────────────────────────────────────────────────── */
 @media (max-width: 800px) {

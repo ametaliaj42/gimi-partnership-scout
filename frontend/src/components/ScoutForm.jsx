@@ -8,7 +8,7 @@ const PARTNER_TYPES = [
   { value: 'Strategic Brand Partner',   icon: '🤝', label: 'Brand Partner' },
 ];
 
-export default function ScoutForm({ onSubmit, isLoading }) {
+export default function ScoutForm({ onSubmit, isLoading, filterUncontacted, onFilterChange, totalResults, filteredCount }) {
   const [partnerType, setPartnerType]   = useState('');
   const [region, setRegion]             = useState('');
   const [sectorFocus, setSectorFocus]   = useState('');
@@ -163,6 +163,27 @@ export default function ScoutForm({ onSubmit, isLoading }) {
           ))}
         </div>
       </div>
+
+      {/* Filter toggle */}
+      {totalResults > 0 && (
+        <div className="field-group">
+          <label className="field-label">Filter Results</label>
+          <button
+            type="button"
+            className={`filter-toggle${filterUncontacted ? ' active' : ''}`}
+            onClick={() => onFilterChange(!filterUncontacted)}
+            title={filterUncontacted ? 'Showing only uncontacted companies' : 'Show all companies'}
+          >
+            <span className="filter-icon">
+              {filterUncontacted ? '✓' : '○'}
+            </span>
+            <span className="filter-label">
+              Uncontacted Only
+              {filterUncontacted && ` (${filteredCount}/${totalResults})`}
+            </span>
+          </button>
+        </div>
+      )}
 
       <div className="divider" />
 

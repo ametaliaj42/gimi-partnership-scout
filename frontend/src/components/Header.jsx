@@ -8,27 +8,18 @@ export default function Header() {
       {/* Left — logo + agent label */}
       <div style={{ display: 'flex', alignItems: 'center' }}>
 
-        {/* Logo in white pill container so it reads cleanly on dark background */}
-        <div style={{
-          background: '#ffffff',
-          borderRadius: 'var(--r-md)',
-          padding: '5px 12px',
-          display: 'flex',
-          alignItems: 'center',
-          boxShadow: '0 1px 4px rgba(0,0,0,0.18)',
-        }}>
-          <img
-            src={gimiLogo}
-            alt="GIMI Institute — Global Innovation Management Institute"
-            style={{
-              height: 34,
-              width: 'auto',
-              display: 'block',
-            }}
-          />
-        </div>
+        {/* Logo — transparent PNG renders directly on dark header */}
+        <img
+          src={gimiLogo}
+          alt="GIMI Institute — Global Innovation Management Institute"
+          style={{
+            height: 46,
+            width: 'auto',
+            display: 'block',
+          }}
+        />
 
-        <div className="header-sep" />
+        <div className="header-sep" style={{ margin: '0 16px' }} />
 
         {/* Agent label */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
